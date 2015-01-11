@@ -2,6 +2,7 @@ package eu.matejkormuth.mcserverlist.http;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
+import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -9,16 +10,19 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+import java.util.logging.Logger;
 
 public class HttpApiClient {
+	private final Logger log = Logger.getLogger(this.getClass().getName());
+	
 	private final String apiRoot;
 	private final ExecutorService executor;
 	private String token;
-	
+
 	public HttpApiClient(final String apiRoot) {
 		this(apiRoot, Executors.newFixedThreadPool(1));
 	}
-	
+
 	public HttpApiClient(final String apiRoot, final ExecutorService executor) {
 		this.apiRoot = apiRoot;
 		this.executor = executor;
@@ -27,15 +31,16 @@ public class HttpApiClient {
 	public void setToken(String token) {
 		this.token = token;
 	}
-	
+
 	public HttpApiResponse sendSync(final HttpApiRequest request) {
 		// Automatically add token to request.
-		if(this.token != null) {
+		if (this.token != null) {
 			request.getRequestData().add("token", this.token);
 		}
-		return this.sendSync0(this.apiRoot + request.getRelPath(), request.toJson());
+		return this.sendSync0(this.apiRoot + request.getRelPath(),
+				request.toJson());
 	}
-	
+
 	public Future<HttpApiResponse> sendAsync(final HttpApiRequest request) {
 		return this.executor.submit(new Callable<HttpApiResponse>() {
 			@Override
@@ -44,12 +49,13 @@ public class HttpApiClient {
 			}
 		});
 	}
-	
+
 	public void shutdown() {
 		this.executor.shutdown();
 	}
-	
-	private HttpApiResponse sendSync0(final String urlstring, final String jsonData) {
+
+	private HttpApiResponse sendSync0(final String urlstring,
+			final String jsonData) {
 		StringBuilder response;
 		HttpURLConnection connection = null;
 		try {
@@ -78,6 +84,9 @@ public class HttpApiClient {
 				response.append(line);
 			}
 			return new HttpApiResponse(response.toString());
+		} catch (FileNotFoundException e) {
+			log.severe("Can't connect to API server!");
+			return null;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.logging.Logger;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -22,6 +23,8 @@ import eu.matejkormuth.mcserverlist.tags.TagResolver;
 
 public class BukkitServerInformationGatherer implements InformationGatherer,
 		Server {
+	private final Logger log = Logger.getLogger(this.getClass().getName());
+	
 	private String name;
 	private String description;
 	private URL web;
@@ -48,8 +51,9 @@ public class BukkitServerInformationGatherer implements InformationGatherer,
 		PluginTagMapping pluginTagMapping = null;
 		try {
 			pluginTagMapping = new PluginTagMapping(this.getClass()
-					.getResource("pluins.mapping").openStream());
+					.getResource("plugins.mapping").openStream());
 		} catch (Exception e) {
+			log.severe("Can't load plugins.mapping file!");
 			e.printStackTrace();
 		}
 
