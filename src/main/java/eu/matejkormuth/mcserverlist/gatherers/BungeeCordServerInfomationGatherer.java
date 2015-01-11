@@ -1,6 +1,5 @@
 package eu.matejkormuth.mcserverlist.gatherers;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -49,7 +48,7 @@ public class BungeeCordServerInfomationGatherer implements InformationGatherer,
 		try {
 			pluginTagMapping = new PluginTagMapping(this.getClass()
 					.getResource("pluins.mapping").openStream());
-		} catch (IOException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
