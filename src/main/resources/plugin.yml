@@ -1,0 +1,4 @@
+name: Serverlist
+main: eu.matejkormuth.mcserverlist.boot.ServerlistBukkitPlugin
+version: 1.0
+author: dobrakmato
