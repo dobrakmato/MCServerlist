@@ -10,7 +10,7 @@ import eu.matejkormuth.mcserverlist.json.JsonObject;
 public class HttpApiReportFullRequest extends HttpApiRequest {
 
 	public HttpApiReportFullRequest(final Server server) {
-		super("report.php");
+		super("report");
 
 		this.addPlugins(server);
 		this.addPlayers(server);

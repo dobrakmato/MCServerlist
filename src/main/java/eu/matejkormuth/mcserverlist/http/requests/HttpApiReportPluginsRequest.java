@@ -9,7 +9,7 @@ import eu.matejkormuth.mcserverlist.json.JsonObject;
 public class HttpApiReportPluginsRequest extends HttpApiRequest {
 
 	public HttpApiReportPluginsRequest(final Server server) {
-		super("report.php");
+		super("report");
 		
 		JsonArray pluginsArray = new JsonArray();
 		for(Plugin p : server.getPlugins()) {

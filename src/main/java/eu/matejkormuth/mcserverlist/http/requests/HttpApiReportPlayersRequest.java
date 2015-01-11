@@ -6,7 +6,7 @@ import eu.matejkormuth.mcserverlist.json.JsonArray;
 
 public class HttpApiReportPlayersRequest extends HttpApiRequest {
 	public HttpApiReportPlayersRequest(final Server server) {
-		super("report.php");
+		super("report");
 		
 		JsonArray playerArray = new JsonArray();
 		for(String player : server.getPlayers()) {
