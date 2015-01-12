@@ -34,7 +34,15 @@ public class Comunicator {
 
 	public JsonObject registerNew() {
 		this.log.info("Registering on serverlist...");
-		return this.client.sendSync(new HttpApiRegisterRequest()).getResposne();
+		HttpApiResponse response = this.client
+				.sendSync(new HttpApiRegisterRequest());
+		if (response == null) {
+			return null;
+		}
+		if (!response.isSuccessfull()) {
+			this.log.warning("Unsuccessfull request: " + response.getError());
+		}
+		return response.getResposne();
 	}
 
 	public void reportAsync() {

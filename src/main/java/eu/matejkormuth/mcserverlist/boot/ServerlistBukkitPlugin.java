@@ -5,6 +5,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import eu.matejkormuth.mcserverlist.Comunicator;
 import eu.matejkormuth.mcserverlist.gatherers.BukkitServerInformationGatherer;
+import eu.matejkormuth.mcserverlist.json.JsonObject;
 
 public class ServerlistBukkitPlugin extends JavaPlugin {
 	private final static String API_ROOT = "http://minecraftservery.eu/api/";
@@ -25,7 +26,10 @@ public class ServerlistBukkitPlugin extends JavaPlugin {
 		// Register if can't find token.
 		if(this.token == null) {
 			this.getLogger().info("Registering on serverlist...");
-			this.token = this.comunicator.registerNew().getString("token", null);
+			JsonObject resp =  this.comunicator.registerNew();
+			if(resp != null) {
+				this.token = resp.getString("token", null);
+			}
 			
 			if(this.token == null) {
 				this.getLogger().severe("Can't obtain indentification token from serverlist. Giving up!");
