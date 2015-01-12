@@ -18,6 +18,15 @@
 			<version>1.7-SNAPSHOT</version>
 			<scope>provided</scope>
 		</dependency>
+		
+		<!-- HOOKS DEPENDENCIES -->
+		<dependency>
+			<groupId>org.dynmap</groupId>
+			<artifactId>dynmap</artifactId>
+			<version>2.0</version>
+			<scope>provided</scope>
+		</dependency>
+		
 	</dependencies>
 
 	<repositories>
@@ -29,6 +38,13 @@
 			<id>BungeeCord-repo</id>
 			<url>https://oss.sonatype.org/content/groups/public/</url>
 		</repository>
+		
+		<!-- HOOKS REPOSITORIES -->
+		<repository>
+			<id>dynmap-repo</id>
+			<url>http://repo.mikeprimm.com/</url>
+		</repository>
+		
 	</repositories>
 
 	<build>

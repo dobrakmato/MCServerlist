@@ -2,8 +2,10 @@ package eu.matejkormuth.mcserverlist.gatherers;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.logging.Logger;
 
@@ -34,6 +36,7 @@ public class BukkitServerInformationGatherer implements InformationGatherer,
 	private List<Plugin> plugins;
 	private Set<Tag> tags;
 	private List<String> players;
+	private Map<String, String> specials;
 	private String motd;
 	private int maxPlayers;
 
@@ -47,6 +50,7 @@ public class BukkitServerInformationGatherer implements InformationGatherer,
 		this.plugins = new ArrayList<Plugin>();
 		this.tags = new HashSet<Tag>();
 		this.players = new ArrayList<String>();
+		this.specials = new HashMap<String, String>();
 
 		PluginTagMapping pluginTagMapping = null;
 		try {
@@ -195,5 +199,15 @@ public class BukkitServerInformationGatherer implements InformationGatherer,
 	@Override
 	public void removeTag(final Tag tag) {
 		this.tags.remove(tag);
+	}
+
+	@Override
+	public void setSpecial(String key, String value) {
+		this.specials.put(key, value);
+	}
+
+	@Override
+	public void removeSpecial(String key) {
+		this.specials.remove(key);
 	}
 }

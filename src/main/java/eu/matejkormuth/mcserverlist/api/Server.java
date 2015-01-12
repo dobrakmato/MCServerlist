@@ -32,4 +32,8 @@ public interface Server {
 	void removeTag(Tag tag);
 	
 	List<String> getPlayers();
+	
+	void setSpecial(String key, String value);
+	
+	void removeSpecial(String key);
 }
