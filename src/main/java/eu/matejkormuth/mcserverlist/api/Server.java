@@ -27,5 +27,9 @@ public interface Server {
 	
 	Set<Tag> getTags();
 	
+	void addTag(Tag tag);
+	
+	void removeTag(Tag tag);
+	
 	List<String> getPlayers();
 }

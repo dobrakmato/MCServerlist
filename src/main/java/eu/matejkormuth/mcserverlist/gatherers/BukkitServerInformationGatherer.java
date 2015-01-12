@@ -186,4 +186,14 @@ public class BukkitServerInformationGatherer implements InformationGatherer,
 	public Server toServer() {
 		return this;
 	}
+
+	@Override
+	public void addTag(final Tag tag) {
+		this.tags.add(tag);
+	}
+
+	@Override
+	public void removeTag(final Tag tag) {
+		this.tags.remove(tag);
+	}
 }
