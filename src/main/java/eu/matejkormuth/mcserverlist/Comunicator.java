@@ -5,7 +5,6 @@ import java.util.concurrent.Future;
 import java.util.logging.Logger;
 
 import eu.matejkormuth.mcserverlist.api.InformationGatherer;
-import eu.matejkormuth.mcserverlist.api.Server;
 import eu.matejkormuth.mcserverlist.http.HttpApiClient;
 import eu.matejkormuth.mcserverlist.http.HttpApiResponse;
 import eu.matejkormuth.mcserverlist.http.requests.HttpApiRegisterRequest;

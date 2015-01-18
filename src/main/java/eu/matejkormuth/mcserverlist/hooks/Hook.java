@@ -2,10 +2,14 @@ package eu.matejkormuth.mcserverlist.hooks;
 import eu.matejkormuth.mcserverlist.api.Server;
 
 public abstract class Hook<T> {
-	private Server thisServer;
+	private Server localServer;
 	
 	public Server getLocalServer() {
-		return thisServer;
+		return localServer;
+	}
+	
+	void setLocalServer(final Server server) {
+		this.localServer = server;
 	}
 	
 	public abstract boolean isTargetAvailable();

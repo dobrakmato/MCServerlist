@@ -2,3 +2,6 @@ name: Serverlist
 main: eu.matejkormuth.mcserverlist.boot.ServerlistBukkitPlugin
 version: 1.0
 author: dobrakmato
+commands:
+   sltoken:
+     description: Returns server token in serverlist.
