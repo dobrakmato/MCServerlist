@@ -7,7 +7,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import eu.matejkormuth.mcserverlist.Comunicator;
-import eu.matejkormuth.mcserverlist.commands.SLTokenExecutor;
 import eu.matejkormuth.mcserverlist.gatherers.BukkitServerInformationGatherer;
 import eu.matejkormuth.mcserverlist.json.JsonObject;
 
